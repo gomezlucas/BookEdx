@@ -1,0 +1,59 @@
+{%extends "layout.html" %}
+
+{%block title%} Login {%endblock%}
+{%block content%}
+<!-- header -->
+<div class="container ">
+    <div class="row justify-content-md-center text-center mb-2 mt-4">
+        <div class="col">
+            <h1 class="h2 font-weight-bold"> Welcome, {{name}}! </h1>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+<!-- form -->
+<form action=" " method="post">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-10 col-sm-auto mb-2">
+                <input type="text" class="form-control" name="wordToSearch"
+                    placeholder="Insert book to search by Title, Author or ISBN">
+            </div>
+            <div class="col-md-2 col-sm-auto">
+                <button class="btn btn-book btn-block"> Search</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- end form -->
+<!-- books results -->
+<div class="container">
+    {%if booksToDisplay %}
+    <div class="table-responsive-sm mt-4">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for book in booksToDisplay%}
+                <tr>
+                    <td>{{book.title }}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.isbn  }}</td>
+                    <td>{{book.year  }}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    {%else%}
+    <h4 class="mt-4"> There are not matching books</h4>
+    {%endif%}
+</div>
+<!--end books results -->
+{%endblock%}

@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f1f6fc;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+h1, h4{
+  color: #7d7bba;
+}
+
+tr{
+  color: #373e46;
+
+}
+
+.container_form {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #ffff;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-book {
+  color: #fff;
+  background-color: #7d7bba;
+  border-color: #7d7bba;
+}
+.btn-book:hover {
+  background-color: #b1afd7;
+  border-color: #b1afd7;
+  color: #fff;
+}
+
+
+.logo-size{
+  transform: scale(0.8)
+}
+
+.text-purple{
+  color: #7d7bba;
+}
+
+
+.text-purple:hover{
+  color: #b1afd7;
+  text-decoration: none;
+}
+
+
+.messageContainer{
+ position: relative;
+}
+
+.messageAlert{
+  position: absolute;
+  top: 0;
+  left:0;
+  right:0;
+}
+
+.cont-height{
+  width: 100%;
+  height: 500px;
+
+}
+
+.image{
+ display: block;
+  }
+
+  .image-mobile{
+    display: none;
+  }
+
+@media screen and (max-width:991px){
+  .image{
+    display: none;
+     }
+    .image-mobile{
+      display: block;
+    }
+}
