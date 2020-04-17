@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -9,8 +10,8 @@ def create_app():
 
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'asdfasdf'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://qtkcvpmkvldwfy:7b437f1ac7cb1468ce4273af05b9a2ce8276d3b82a584eab157e6e51b4aa9e1a@ec2-3-91-112-166.compute-1.amazonaws.com:5432/d8ufsgg72h6v8h"
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
