@@ -18,6 +18,9 @@ h1, h4{
   color: #7d7bba;
 }
 
+h5{
+  margin: 0;
+}
 tr{
   color: #373e46;
 
@@ -122,4 +125,53 @@ tr{
     .image-mobile{
       display: block;
     }
+}
+
+
+/* Book */
+
+.book__card{
+  box-shadow:1px 2px 4px 1px #21252981;
+
+}
+
+.swiper__card {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #FAFAFA;
+   color: #212529;
+   padding:2rem;
+   border-radius: 8px;
+      box-shadow:1px 2px 4px 1px #21252981;
+
+}
+
+.swiper__text{
+  font-size: 0.9rem;
+    margin-top: 1rem;
+    color: rgb(117, 123, 146);
+    width: 90%;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.time__text{
+  color: rgb(117, 123, 146);
+  font-size: 0.8rem;
+   width: 100%;
+  margin: 0;
+
+}
+
+.book__user__text{
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 767px){
+  .form_title{
+    margin-top: 2rem;
+  }
 }

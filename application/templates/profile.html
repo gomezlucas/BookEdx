@@ -1,6 +1,6 @@
 {%extends "layout.html" %}
 
-{%block title%} Login {%endblock%}
+{%block title%} Profile {%endblock%}
 {%block content%}
 <!-- header -->
 <div class="container ">
@@ -42,7 +42,7 @@
             <tbody>
                 {%for book in booksToDisplay%}
                 <tr>
-                    <td>{{book.title }}</td>
+                    <td> <a class="btn btn-book" href="{{url_for('book.index', isbn=book.isbn)}}"> {{book.title }} </a> </td>
                     <td>{{book.author}}</td>
                     <td>{{book.isbn  }}</td>
                     <td>{{book.year  }}</td>

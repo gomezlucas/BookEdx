@@ -1,0 +1,131 @@
+{%extends "layout.html"%}
+
+{%block title%}
+Book - {{bookInfo.title}}
+{%endblock%}
+
+
+{%block content%}
+<div class="text-left">
+    <a class="btn  btn-book mb-3" href="{{url_for('main.profile')}}"> Go Back </a>
+</div>
+<div class=" row row-cols-md-1 row-cols-lg-2">
+    <div class="col">
+        <div class="card mb-4 book__card">
+            <div class="d-flex card-header align-items-center">
+                <h5 class="mr-3"> {{bookInfo.title}} </h5><span
+                    class="badge badge-info">{{goodReviews.average_rating}}</span>
+            </div>
+            <div class="card-body d-flex row" style="min-height:236px;">
+                <div class="col-md-6 col-sm-12 text-center mb-3">
+                    <img src="http://covers.openlibrary.org/b/isbn/{{bookInfo.isbn}}-M.jpg"
+                        alt="This book cover is not available" style="
+                    max-height: 180px;                ">
+                </div>
+                <div class="col-md-6 mt-2 col-sm-12">
+                    <p class="font-weight-normal"> <strong>Author: </strong> {{bookInfo.author}}</p>
+                    <p class="font-weight-normal"> <strong>ISBN:</strong> {{bookInfo.isbn}} </p>
+                    <p class="font-weight-normal"> <strong>Year: </strong> {{bookInfo.year}} </p>
+                    <p class="font-weight-normal"> <strong>Review Count: </strong> {{goodReviews.reviews_count}} </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+
+        <div class="card mb-3 book__card">
+            <form action="#" method="POST">
+                <div class="d-flex card-header align-items-center">
+                    <h5 class="mr-3">Your Score </h5>
+                    <div class="form-check form-check-inline disabled">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="0" {{'checked="checked"' if userReview is none or userReview.score == 0 }}>
+                        <label class="form-check-label" for="inlineRadio1">n/a</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="1" {{'checked="checked"' if userReview.score == 1 else ""}}>
+                        <label class="form-check-label" for="inlineRadio2">1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="2" {{'checked="checked"' if userReview.score == 2 else ""}}>
+                        <label class="form-check-label" for="inlineRadio3">2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="3" {{'checked="checked"' if userReview.score == 3 else ""}}>
+                        <label class="form-check-label" for="inlineRadio3">3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="4" {{'checked="checked"' if userReview.score == 4 else ""}}>
+                        <label class="form-check-label" for="inlineRadio3">4</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="5" {{'checked="checked"' if userReview.score == 5 else ""}}>
+                        <label class="form-check-label" for="inlineRadio3">5</label>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {%if userReview %}
+                        <label for="exampleFormControlTextarea1">Edit Your Review </label>
+                        {%else%}
+                        <label for="exampleFormControlTextarea1">Write Your Review </label>
+                        {%endif%}
+                        <textarea name="reviewText" class="form-control" id="exampleFormControlTextarea1" required
+                            rows="4">{{userReview.review_text}}</textarea>
+                    </div>
+                    <div class="text-right">
+                      {%if userReview %}
+                      <button class="btn  btn-book" type="submit"> Update   </button>
+                      {%else %}
+                      <button class="btn  btn-book" type="submit"> Post </button>
+                      {%endif%}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1 class="h2 font-weight-bold"> Comunity Reviews</h1>
+    <div class="row row-cols-1 mx-auto" style="max-width: 700px;">
+        {%if userReview%}
+        <div class="card swiper__card col">
+            <div class="d-flex just-content-left align-items-center">
+                <span class="font-italic text-capitalize book__user__text mr-3"> Your Review </span>
+                <span class="badge badge-info">{{userReview.score}}</span>
+            </div>
+            <p class="swiper__text">{{userReview.review_text}}</p>
+            <p class="time__text text-right font-weight-light">{{userReview.timestamp.strftime('%d-%b-%Y / %H:%M') }}</p>
+        </div>
+        {%endif%}
+
+        {%for review in allReviews%}
+        <div class="card swiper__card col">
+            <div class="d-flex just-content-left align-items-center">
+                <span class="font-italic text-capitalize book__user__text mr-3"> by {{review[0].username}}</span>
+                <span class="badge badge-info">{{review[1].score}}</span>
+            </div>
+            <p class="swiper__text">{{review[1].review_text}}</p>
+            <p class="time__text text-right font-weight-light">{{review[1].timestamp.strftime('%d-%b-%Y / %H:%M') }}</p>
+
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+
+{%endblock%}
+<!--  <div class="card swiper__card col">
+    <div class="font-italic text-capitalize book__user__text"> by Lucas Gomez</div>
+    <p class="swiper__text">Even though the book is very long. You can not notice the past of the time while
+        your
+        are reading it. Iconic</p>
+
+</div>-->

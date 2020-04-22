@@ -4,10 +4,11 @@
 {%block content%}
 
 <div class="container_form text-center messageContainer ">
-    {%with messages = get_flashed_messages()%}
+    {%with messages = get_flashed_messages(with_categories=true)%}
     {% if messages %}
-    {% for msg in messages%}
-    <div class="alert alert-danger  messageAlert alert-dismissible" role="alert">
+    {% for category, msg in messages%}
+        
+    <div class="alert alert-{{category}} messageAlert alert-dismissible" role="alert">
         {{msg}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -18,8 +19,7 @@
     {%endwith%}
 
     <form action="#" method="POST" class="form-signin ">
-        <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-bold">Sign Up</h1>
+        <h1 class="h3 mb-3 font-weight-bold form_title">Sign Up</h1>
         <label for="inputEmail" class="sr-only"> Email address</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required
             autofocus>
@@ -28,6 +28,8 @@
             autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputPassword2" class="sr-only">Confirm Your Password</label>
+        <input type="password" name="confirmPassword" id="inputPassword2" class="form-control" placeholder="Confirm your Password" required>
         <button class="btn btn-lg btn-book btn-block" type="submit">Sign up</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
     </form>
