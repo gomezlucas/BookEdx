@@ -2,10 +2,7 @@ from flask import render_template, Blueprint, request, redirect, url_for,jsonify
 from flask_login import login_required, current_user
 from .models import Books
  
-
-
 main = Blueprint('main', __name__)
-
 
 @main.route('/')
 def index():
@@ -30,3 +27,6 @@ def profilePost():
         wordFormated) | Books.isbn.ilike(wordFormated)).all()
     return render_template('profile.html', name=user.username, booksToDisplay=bookQuery)
 
+@main.app_errorhandler(404)
+def error404(e):
+    return render_template("errorPage.html")

@@ -1,0 +1,16 @@
+{%extends "layout.html"%}
+
+
+{%block title%}
+404 Error
+{%endblock%}
+
+{%block content%}
+<div class="container d-flex justify-content-center align-items-left flex-column ">
+    <h1> 404 - Not Found </h1>
+    <h5 class="text-purple mt-3"> Sorry! This page is blank. Head back to our Home Page and look for more books... </h5>
+    <img  class="img-fluid mt-5 align-self-end" style="width:40%; opacity:0.8;" src="{{url_for('static',filename='bookblank.jpg')}}" alt="">
+ 
+</div>
+
+{%endblock%}

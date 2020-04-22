@@ -62,5 +62,7 @@ Define the routes for the login and authentication of the users. Also set hash t
  Routes for the profile where the user can search the books. Do the queries to check if the value in the search bar matches with the information. When user types ISBN number of a book, the title of a book, or an author of the book, the site displays the matching records and a Notfound message if there arent not matches.
 ###### books.py
 Renders the template when of the book from the results of the search page. Provides the details about the book: its title, author, publication year, ISBN number, and the  reviews that users  left for the book on my website.
+###### api.py
+Set route "/api/<isbn>" so users can access to information about that book, review score and average hosted in my Databaase. It returns a JSON response. If it's not in the database it returns 404 error.
 ##### static files
 Images for the app and the  css styles
