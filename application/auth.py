@@ -22,9 +22,10 @@ def loginPost():
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
-    user = User.query.filter_by(email=email).first()
-    
 
+ ## user = User.query.filter_by(email=email).first()
+    user1 = db.engine.execute('SELECT * FROM "user" where email = %s',(email)).fetchone()
+    print(f"{user1.username}")
 
     if user and check_password_hash(user.password, password):
         login_user(user, remember = remember)
@@ -46,6 +47,7 @@ def signupPost():
     confirmPassword = request.form.get('confirmPassword')
 
     user = User.query.filter_by(email=email).first()
+   
     if user:
         flash("Email already exists! Try another one", "danger")
         return redirect(url_for('auth.signup'))
