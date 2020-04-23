@@ -1,8 +1,10 @@
-# 'BookEdx'  (in progress)
+# 'BookEdx' 
 #  App deployed: https://bookedx.herokuapp.com/ 
 
-
 Project based on the CS50's Web Programming the project 1 of course on Edx Website. Using python, Flask and PostgreSQL. I've used SQlalchemy ORM for this project. 
+
+![Image of main Screen](./application/static/bookedx.png)
+
 
 ### Models
 Declare the tables in SQLPostgres. 
