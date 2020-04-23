@@ -9,7 +9,7 @@ Book - {{bookInfo.title}}
 <div class="text-left">
     <a class="btn  btn-book mb-3" href="{{url_for('main.profile')}}"> Go Back </a>
 </div>
-<div class=" row row-cols-md-1 row-cols-lg-2">
+<div class="row row-cols-1 row-cols-lg-2">
     <div class="col">
         <div class="card mb-4 book__card">
             <div class="d-flex card-header align-items-center">
@@ -36,37 +36,39 @@ Book - {{bookInfo.title}}
 
         <div class="card mb-3 book__card">
             <form action="#" method="POST">
-                <div class="d-flex card-header align-items-center">
+                <div class="d-flex card-header align-items-center justify-content-between flex-column flex-sm-row">
                     <h5 class="mr-3">Your Score </h5>
-                    <div class="form-check form-check-inline disabled">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                            value="0" {{'checked="checked"' if userReview is none or userReview.score == 0 }}>
-                        <label class="form-check-label" for="inlineRadio1">n/a</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                            value="1" {{'checked="checked"' if userReview.score == 1 else ""}}>
-                        <label class="form-check-label" for="inlineRadio2">1</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                            value="2" {{'checked="checked"' if userReview.score == 2 else ""}}>
-                        <label class="form-check-label" for="inlineRadio3">2</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                            value="3" {{'checked="checked"' if userReview.score == 3 else ""}}>
-                        <label class="form-check-label" for="inlineRadio3">3</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                            value="4" {{'checked="checked"' if userReview.score == 4 else ""}}>
-                        <label class="form-check-label" for="inlineRadio3">4</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                            value="5" {{'checked="checked"' if userReview.score == 5 else ""}}>
-                        <label class="form-check-label" for="inlineRadio3">5</label>
+                    <div class="d-flex align-items-center">
+                        <div class="form-check form-check-inline disabled">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="0" {{'checked="checked"' if userReview is none or userReview.score == 0 }}>
+                            <label class="form-check-label" for="inlineRadio1">n/a</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="1" {{'checked="checked"' if userReview.score == 1 else ""}}>
+                            <label class="form-check-label" for="inlineRadio2">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="2" {{'checked="checked"' if userReview.score == 2 else ""}}>
+                            <label class="form-check-label" for="inlineRadio3">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="3" {{'checked="checked"' if userReview.score == 3 else ""}}>
+                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="4" {{'checked="checked"' if userReview.score == 4 else ""}}>
+                            <label class="form-check-label" for="inlineRadio3">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="5" {{'checked="checked"' if userReview.score == 5 else ""}}>
+                            <label class="form-check-label" for="inlineRadio3">5</label>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -80,11 +82,11 @@ Book - {{bookInfo.title}}
                             rows="4">{{userReview.review_text}}</textarea>
                     </div>
                     <div class="text-right">
-                      {%if userReview %}
-                      <button class="btn  btn-book" type="submit"> Update   </button>
-                      {%else %}
-                      <button class="btn  btn-book" type="submit"> Post </button>
-                      {%endif%}
+                        {%if userReview %}
+                        <button class="btn  btn-book" type="submit"> Update </button>
+                        {%else %}
+                        <button class="btn  btn-book" type="submit"> Post </button>
+                        {%endif%}
                     </div>
                 </div>
             </form>
@@ -92,7 +94,7 @@ Book - {{bookInfo.title}}
     </div>
 </div>
 
-<div >
+<div>
     <h1 class="h2 font-weight-bold"> Comunity Reviews</h1>
     <div class="row row-cols-1 mx-auto" style="max-width: 700px;">
         {%if userReview%}
@@ -102,7 +104,8 @@ Book - {{bookInfo.title}}
                 <span class="badge badge-info">{{userReview.score}}</span>
             </div>
             <p class="swiper__text">{{userReview.review_text}}</p>
-            <p class="time__text text-right font-weight-light">{{userReview.timestamp.strftime('%d-%b-%Y / %H:%M') }}</p>
+            <p class="time__text text-right font-weight-light">{{userReview.timestamp.strftime('%d-%b-%Y / %H:%M') }}
+            </p>
         </div>
         {%endif%}
 
@@ -122,10 +125,3 @@ Book - {{bookInfo.title}}
 
 
 {%endblock%}
-<!--  <div class="card swiper__card col">
-    <div class="font-italic text-capitalize book__user__text"> by Lucas Gomez</div>
-    <p class="swiper__text">Even though the book is very long. You can not notice the past of the time while
-        your
-        are reading it. Iconic</p>
-
-</div>-->
