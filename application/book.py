@@ -24,7 +24,7 @@ def index(isbn):
    book = Books.query.filter_by(isbn=isbn).first()
 
    userReview = Review.query.filter(Review.user_id == current_user.id, Review.book_id==bookInfo.book_id).first()
-   allReviews = db.session.query(User, Review).outerjoin(Review, User.id == Review.user_id).filter(Review.book_id == bookInfo.book_id, Review.user_id != current_user.id).all()
+   allReviews = db.session.query(User, Review).outerjoin(Review, User.id == Review.user_id).filter(Review.book_id == bookInfo.book_id, Review.user_id != current_user.id).order_by(Review.timestamp.desc()).all()
 
    return render_template('book.html', bookInfo=bookInfo , goodReviews=goodReviews, userReview=userReview, allReviews=allReviews )
 
